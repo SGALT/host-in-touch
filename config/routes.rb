@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get :login, to: "sessions#new", as: "new_hotel_session"
   delete :logout, to: "sessions#destroy", as: "destroy_session"
+
+  resources :registrations, only: [:new, :create, :edit, :update]
 end
