@@ -7,12 +7,13 @@ class SessionsController < ApplicationController
     email = params[:user][:email]
     password = params[:user][:password]
 
-    begin
+    begin 
       response = RestClient.post(url, {email: email, password: password})
       cookies[:jwt_roomintouch] = JSON.parse(response)["jwt"]
       redirect_to root_path
-    rescue => exception
-      raise
+    rescue RestClient::ExceptionWithResponse => e
+      errors = JSON.parse(e.response.body)["errors"].to_a.join
+      redirect_to new_hotel_session, alert: errors
     end
   end
 
