@@ -1,0 +1,5 @@
+<%= simple_form_for :user, url: sessions_path do |f| %>
+  <%= f.input :email, as: :string %>
+  <%= f.input :password, as: :password %>
+  <%= f.submit "Valider" %>
+<% end %>
