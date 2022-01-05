@@ -1,5 +1,25 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "se connecter", new_hotel_session_path %>
-<%= link_to "se déconnecter", destroy_session_path, method: :delete %>
-<%= link_to "créer un compte", new_registration_path %>
+<nav>
+<ul>
+  <li>
+    <%= link_to "se connecter", new_hotel_session_path %>
+  </li>
+  <li>
+    <%= link_to "se déconnecter", destroy_session_path, method: :delete %>
+  </li>
+  <li>
+    <%= link_to "créer un compte", new_registration_path %>
+  </li>
+  <li>
+    <%= link_to "Clients", clients_path %>
+  </li>
+  <li>
+  </li>
+  <li>
+  </li>
+
+</ul>
+</nav>
+
+

@@ -1,0 +1,40 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-sm-8 col-md-6 custom-form">
+    <%= simple_form_for(:client, url: client_path(@client.id), method: :patch) do |f| %>
+      <%= @errors.map(&:detail).join(", ") if @errors %>
+      <div class="form-row">
+        <div class="col-3">
+          <%= f.input :civility, 
+                      as: :select, 
+                      value_method: :first, 
+                      collection: @client.meta.civilities.to_h,
+                      selected: @client.attributes.civility
+                      %>
+        </div>
+        <div class="col">
+          <%= api_input(@client, :last_name)%>
+        </div>
+        <div class="col">
+          <%= api_input(@client, :first_name)%>
+        </div>
+      </div>
+      <%= api_input(@client, :address)%>
+      <%= api_input(@client, :zip_code)%>
+      <%= api_input(@client, :city)%>
+      <%= f.input :country, 
+                  as: :select, 
+                  value_method: :first, 
+                  label_method: :last, 
+                  collection: @countries,
+                  selected: @client.attributes.country.present? ? @client.attributes.country : "FRA"
+                  %>
+      <%= api_input(@client, :language)%>
+      <%= api_input(@client, :email)%>
+      <%= api_input(@client, :phone_1)%>
+      <%= api_input(@client, :phone_2)%>
+      <%= api_input(@client, :comment)%>
+      <%= api_input(@client, :company)%>
+      <%= f.submit %>
+    <% end %>
+  </div>
+ </div>
