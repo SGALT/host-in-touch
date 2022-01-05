@@ -1,0 +1,9 @@
+<ul>
+  <% @client.attributes.each_pair do |attr, value| %>
+    <li>
+      <%= attr %> : <%= value %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "update", edit_client_path(@client.id) %> 

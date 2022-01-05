@@ -1,0 +1,39 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-sm-8 col-md-6 custom-form">
+    <%= simple_form_for(:client, url: clients_path, method: :post) do |f| %>
+      <%= @errors.map(&:detail).join(", ") if @errors %>
+      <div class="form-row">
+        <div class="col-3">
+          <%= f.input :civility, 
+                      as: :select, 
+                      value_method: :first, 
+                      collection: @client.meta.civilities.to_h
+                      %>
+        </div>
+        <div class="col">
+          <%= f.input :last_name %>
+        </div>
+        <div class="col">
+          <%= f.input :first_name %>
+        </div>
+      </div>
+      <%= f.input :address %>
+      <%= f.input :zip_code %>
+      <%= f.input :city %>
+      <%= f.input :country, 
+                  as: :select, 
+                  value_method: :first, 
+                  label_method: :last, 
+                  collection: @countries,
+                  selected: @client.attributes.country.present? ? @client.attributes.country : "FRA"
+                  %>
+      <%= f.input :language %>
+      <%= f.input :email %>
+      <%= f.input :phone_1 %>
+      <%= f.input :phone_2 %>
+      <%= f.input :comment %>
+      <%= f.input :company %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+ </div>

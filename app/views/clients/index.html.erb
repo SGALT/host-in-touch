@@ -1,0 +1,11 @@
+<%# Note: ne pas ajouter de client directement sans le lié à un booking (sinon on peut pas faire current_hotel.clients) %>
+<%#= link_to "Ajouter un client", new_client_path, class: "btn btn-primary"%>
+<ul>
+  <% @clients.each do |client| %>
+    <li>
+      <%= link_to client_path(client.id) do %>
+        <%= client.attributes.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
